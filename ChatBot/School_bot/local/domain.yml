@@ -1,0 +1,157 @@
+version: "3.0"
+
+intents:
+  - greet
+  - thankyou
+  - inform
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - requrst_problem
+  - accept
+  - text_problem
+  - reject
+  - ask_for_pay
+  - request_absence
+  - number_of_dey
+  - out_of_scope
+  - Asking_about_marks 
+  - Select_subject
+  - Select_typ_marks
+  - help
+
+
+
+
+
+entities: 
+  - choice
+  - day
+
+forms:
+  problem_form:
+    required_slots:
+      - text_of_problem
+  day_form:
+    required_slots:
+      - day
+  text_cause_form:
+    required_slots:
+      - text_cause
+
+
+slots:
+  text_of_problem:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: problem_form
+           requested_slot: text_of_problem
+  choice:
+    type: categorical
+    values: 
+      - rock
+      - paper
+      - scissors
+    mappings:
+    - type: from_entity
+      entity: choice
+  text_cause:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: text_cause_form
+           requested_slot: text_cause
+  day:
+    type: categorical
+    values: 
+      - \d{1}
+    mappings:
+    - type: from_entity
+      entity: day
+
+
+
+
+
+
+responses:
+  utter_play:
+  - text: "Type 'rock', 'paper' or 'scissors' to play."
+
+  utter_play_again:
+  - text: "Do you want play again?"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "أنا مجيب ألي، لمساعدك في التواصل مع المدرسة"
+
+  utter_requrst_problem:
+  - text: "هل لديك شكوى تريد تقديمها لإدارة المدرسة"
+
+  utter_accept:
+  - text: "تفضل بذكر الشكوى"
+
+  utter_text_problem:
+  - text: "تم تسجيل الشكوى، شكراً لتواصلك معنا، سوف يتم حل المشكلة قريباً"
+
+  utter_reject:
+  - text: "شكراً لتواصلك، يمكنك التواصل معنا في أي وقت"
+
+  utter_pay:
+  - text: "الأقساط المترتبة علي مع مواعيدها كتالي"
+
+  utter_request_absence_1:
+  - text: "الأيام الواجب تبريرها هي"
+
+  utter_request_absence_2:
+  - text: "يرجى ذكر رقم اليوم المطلوب تبريره"
+
+  utter_get_absence:
+  - text: "ما هو سبب الغياب؟"
+
+  utter_sub_absence:
+  - text: "تم إتمام العملية بنجاح"
+  
+  utter_out_of_scope:
+  - text: "أنا أسف، لست متأكد أن كان بإمكاني مساعدك"
+
+  utter_greet:
+  - text: "أهلا بك، أنا مجيب آلي لمدرسة"
+ 
+  utter_help:
+  - text: "يمكنني مساعدك في تقديم مجموعة من الخدمات \nوهي: \n- طلب تبرير غياب  \n- الاستعلام عن علامات الطالب \n- الاستعلام عن الأقساط المترتبة \n- تقديم شكوى"
+
+  utter_Asking_about_marks:
+  - text: "ما هي المادة المراد معرفة علامتها اختر من القائمة التالية ما تريد :"
+
+  utter_Select_subject:
+  - text: " ما هو نوع العلامة المطلوبة: مذاكرة أو امتحان  "
+
+  utter_Select_typ_marks:
+  - text: " العلامة هي : "
+
+
+actions:
+  - action_play_rps
+  - action_submit_problem
+  - action_pay
+  - action_get_days
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+version: "3.0"
+
+stories:
+
+
+
+# - story: don't submit problem
+#   steps:
+#   - intent: requrst_problem
+#   - action: utter_requrst_problem
+#   - intent: reject
+#   - action: utter_reject
+
+# - story: submit problem 1
+#   steps:
+#   - intent: requrst_problem
+#   - action: utter_requrst_problem
+#   - intent: accept
+#   - action: utter_accept
+#   - action: problem_form
+#   - active_loop: problem_form
+#   - slot_was_set:
+#     - requested_slot: text_of_problem
+#   - slot_was_set:
+#     - text_of_problem: None
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_text_problem
+#   - action: action_submit_problem
+
+
+# - story: absence cause 
+#   steps:
+#   - intent: request_absence
+#   - action: utter_request_absence_1
+#   - action: action_get_days
+#   - action: utter_request_absence_2
+#   - intent: number_of_dey
+#   - action: day_form
+#   - active_loop: day_form
+#   - slot_was_set:
+#     - requested_slot: day
+#   - slot_was_set:
+#     - day: None
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_get_absence
+#   - action: text_cause_form
+#   - active_loop: text_cause_form
+#   - slot_was_set:
+#     - requested_slot: text_cause
+#   - slot_was_set:
+#     - day: None
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: utter_sub_absence
+#   - action: action_submit_cause
+
+
+
+# - story: Quary about marks
+#   steps:
+#   - intent: Asking_about_marks
+#   - action: utter_Asking_about_marks
+#   - intent: Select_subject
+#   - action: utter_Select_subject
+#   - intent: Select_typ_marks
+#   - action: utter_Select_typ_marks
+

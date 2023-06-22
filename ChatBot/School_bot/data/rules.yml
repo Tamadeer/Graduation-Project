@@ -1,0 +1,27 @@
+version: "3.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- rule: Say greet  
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+
+  
+- rule: help
+  steps:
+  - intent: help
+  - action: utter_help
+
+- rule: thankyou
+  steps:
+  - intent: thankyou
+  - action: utter_goodbye
+  

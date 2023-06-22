@@ -1,0 +1,98 @@
+version: "3.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: when user want to register
+  steps:
+  - intent: request_to_register
+  - action: utter_request_to_register
+
+
+- rule: the user asks how to register
+  steps:
+  - intent: How to register
+  - action: utter_How_Rej
+  - action: action_Road_Rej
+
+# الأوراق 
+- rule: the user asks for registration papers
+  steps:
+  - intent: Registration papers
+  - action: utter_paper_Rej
+  - action: action_paper_Rej
+
+#وقت بدء التسجيل
+- rule: the user asks for start time recording
+  steps:
+  - intent: Recording start time
+  - action: utter_start_time_Rej
+  - action: action_start_time_Rej
+  
+#وقت انتهاء التسجيل
+- rule: the user asks when registaration end
+  steps:
+  - intent: Registration end time
+  - action: utter_end_time_Rej
+  - action: action_end_time_Rej
+
+
+
+#تكلفة التسجيل بالباصات
+- rule: the user request bus registration cost
+  steps:
+  - intent: Bus_registration_cost
+  - action: utter_Bus_registration_cost
+  - action: action_Bus_registration_cost
+
+#المناطق التي تخدمها الباصات 
+- rule: the user request bus service areas
+  steps:
+  - intent: Bus_service_areas
+  - action: utter_Bus_service_areas
+  - action: action_Bus_service_areas
+
+#(كيفية التسجيل - الغاء التسجيل - استرداد المبلغ - الدفع لسنة كاملة - اشتراك شهري او سنوي)تفاصيل التسجيل بالباصات
+- rule: the user request details subscribe in bus
+  steps:
+  - intent: Bus_registration_details
+  - action: utter_Bus_registration_details
+  - action: action_Bus_registration_details
+
+#موعد انطلاق الباصات 
+- rule: the user request bus departure time
+  steps:
+  - intent: Bus_departure_time
+  - action: utter_Bus_departure_time
+  - action: action_Bus_departure_time
+
+# السؤال عن قسط التسجيل بالمدرسة مع تفاصيل عن كيفية الدفع ومتى وكيفية تسديد القسط
+- rule: the user request school registration premium
+  steps:
+  - intent: School_registration_premium
+  - action: utter_School_registration_premium
+  - action: action_School_registration_premium
+
+
+
+- rule: Say greet  
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_help
+
+  
+- rule: help
+  steps:
+  - intent: help
+  - action: utter_help
+
+- rule: thankyou
+  steps:
+  - intent: thankyou
+  - action: utter_goodbye
+  

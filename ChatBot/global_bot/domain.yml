@@ -1,0 +1,210 @@
+version: "3.0"
+
+intents:
+  - greet
+  - goodbye
+  - request_to_register
+  - How to register
+  - Registration papers
+  - Recording start time
+  - Registration end time
+  - Bus_registration_cost 
+  - Bus_registration_details
+  - Bus_service_areas
+  - Bus_departure_time
+  - School_registration_premium
+  - help
+  - thankyou
+  # - bot_challenge
+  # - inform
+  # - affirm
+  # - deny 
+  # - requrst_problem
+  # - accept
+  # - text_problem
+  # - reject
+  # - ask_for_pay
+  # - request_absence
+  # - number_of_dey
+  # - out_of_scope
+  - Asking_about_marks 
+  - Select_subject
+  # - Select_typ_marks
+
+
+entities: 
+  - choice
+  - day
+
+forms:
+  problem_form:
+    required_slots:
+      - text_of_problem
+  day_form:
+    required_slots:
+      - day
+  text_cause_form:
+    required_slots:
+      - text_cause
+
+
+slots:
+  text_of_problem:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: problem_form
+           requested_slot: text_of_problem
+  choice:
+    type: categorical
+    values: 
+      - rock
+      - paper
+      - scissors
+    mappings:
+    - type: from_entity
+      entity: choice
+  text_cause:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_text
+        conditions:
+         - active_loop: text_cause_form
+           requested_slot: text_cause
+  day:
+    type: categorical
+    values: 
+      - \d{1}
+    mappings:
+    - type: from_entity
+      entity: day
+
+
+
+
+
+responses:
+  utter_request_to_register:
+  - text: "اهلاً وسهلاً يرجى الحضور للمدرسة مع كافة الوثائق و الأوراق المطلوبة للتسجيل"
+
+  utter_How_Rej:
+  - text: "يتم التسجيل بالحضور الشخصي للمدرسة مع جلب الوثائق و الأوراق المطلوبة للتسجيل وآلية التسجيل هي كتالي: "
+
+  utter_goodbye:
+  - text: "أهلاً وسهلاً سُررتُ بخدمتك "
+
+  utter_paper_Rej:
+  - text: "الأوراق المطلوبة هي :"
+
+  utter_start_time_Rej:
+  - text: "يبدأ التسجيل في تاريخ "
+
+  utter_end_time_Rej:
+  - text: "ينتهي التسجيل في تاريخ "
+
+  utter_Jop_Application:
+  - text: " أهلاً وسهلاً يرجى ارسال السيرة الذاتية الخاصة بك "
+
+  utter_Query_for_type_job_vacancy:
+  - text: " بعد ارسال السيرة الذاتية يتم النظر فيها والتواصل معكم في حال الحاجة لاختصاصكم"
+
+  utter_Query_for_send_CV:
+  - text: " نعم لطفاً أرسل لنا سيرتك الذاتية عند رغبتك بالانضمام لكادرنا "
+
+  utter_Bus_registration_cost:
+  - text: " :تكلفة التسجيل على وسائط النقل في مدرستنا حسب المنطق التي تخدمها هي ك التالي"
+
+  utter_Bus_service_areas:
+  - text: " :نقوم بتخديم جميع المناطق التالية "
+
+  utter_Bus_registration_details:
+  - text: " :التفاصيل الكاملة للتسجيل في وسائط النقل المتوفرة لديناهي"
+
+  utter_Bus_departure_time:
+  - text: " :موعد انطلاق الباصات هو "
+
+  utter_School_registration_premium:
+  - text: " القسط السنوي للتسجيل بالمدرسة هو"
+
+  utter_iamabot:
+  - text: "أنا مجيب ألي، لمساعدك في التواصل مع المدرسة"
+
+  utter_requrst_problem:
+  - text: "هل لديك شكوى تريد تقديمها لإدارة المدرسة"
+
+  utter_accept:
+  - text: "تفضل بذكر الشكوى"
+
+  utter_text_problem:
+  - text: "تم تسجيل الشكوى، شكراً لتواصلك معنا، سوف يتم حل المشكلة قريباً"
+
+  utter_reject:
+  - text: "شكراً لتواصلك، يمكنك التواصل معنا في أي وقت"
+
+  utter_pay:
+  - text: " الأقساط المترتبة علي مع مواعيدها كتالي"
+
+  utter_request_absence_1:
+  - text: "الأيام الواجب تبريرها هي"
+
+  utter_request_absence_2:
+  - text: "يرجى ذكر رقم اليوم المطلوب تبريره"
+
+  utter_get_absence:
+  - text: "ما هو سبب الغياب؟"
+
+  utter_sub_absence:
+  - text: "تم إتمام العملية بنجاح"
+  
+  utter_out_of_scope:
+  - text: "أنا أسف، لست متأكد أن كان بإمكاني مساعدك"
+
+  utter_greet:
+  - text: "أهلا بك، أنا مجيب آلي لمدرسة"
+ 
+  utter_help:
+  - text: "يمكنني مساعدك في تقديم مجموعة من الخدمات \nوهي: \n- استعلام عن تسجيل في المدرسة\n- استعلام عن وسائط النقل"
+
+  utter_Asking_about_marks:
+  - text: "ما هي المادة المراد معرفة علامتها  :"
+
+  utter_Select_subject:
+  - text: " ما هو نوع العلامة المطلوبة: مذاكرة أو امتحان  "
+
+  utter_Select_typ_marks:
+  - text: " العلامة هي : "
+
+  utter_get_email:
+  - text: "تفضل باعطاء البريد الإلكتروني"
+  - text: "اذكر البريد الإلكتروني لو سمحت"
+  - text: "تفضل بذكر البريد الإلكتروني الطالب المطلوبة علامته"
+  - text: "إدخل البريد الإلكتروني لطالب"
+
+
+
+
+actions:
+  - action_play_rps
+  - action_Road_Rej
+  - action_submit_problem
+  - action_pay
+  - action_get_days
+  - action_paper_Rej
+  - action_info_rej
+  - action_start_time_Rej
+  - action_end_time_Rej
+  - action_School_registration_premium
+  - action_Bus_registration_cost
+  - action_Bus_service_areas
+  - action_Bus_registration_details
+  - action_Bus_departure_time
+  - action_get_mark
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
